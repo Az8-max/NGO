@@ -17,7 +17,7 @@ const GetInvolved = () => {
             <div className="help-card">
               <div className="help-icon"><Heart size={40} /></div>
               <h3>Donate a Winter Kit</h3>
-              <p>A contribution of ₹1500 provides a heavy blanket, a traditional pheran, and warm socks for a child enduring the valley's winter.</p>
+              <p>A contribution of $20 provides a heavy blanket, a traditional pheran, and warm socks for a child enduring the valley's winter.</p>
               <button className="btn btn-primary w-100" onClick={() => alert('Donation modal!')}>Donate Now</button>
             </div>
             

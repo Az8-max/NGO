@@ -97,7 +97,7 @@ const Homepage = () => {
             <h2>Warm a Child's Heart This Winter</h2>
             <p>Your contribution can provide a Winter Survival Kit for a child in Kashmir, protecting them from sub-zero temperatures.</p>
             <div className="cta-buttons">
-              <button className="btn btn-primary" onClick={() => alert('Donation modal!')}>Donate ₹1500 (One Kit)</button>
+              <button className="btn btn-primary" onClick={() => alert('Donation modal!')}>Donate $20 (One Kit)</button>
               <Link to="/involved" className="btn btn-outline">Join as a Volunteer</Link>
             </div>
           </div>
