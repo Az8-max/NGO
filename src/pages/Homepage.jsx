@@ -9,8 +9,8 @@ const Homepage = () => {
       <section className="hero">
         <div className="hero-overlay"></div>
         <div className="container hero-content">
-          <h1>Hope for the Children of <span>Kashmir</span></h1>
-          <p>From the harsh winters to remote valley schooling, we are dedicated to bringing warmth, education, and healthcare to every child in Jammu & Kashmir.</p>
+          <h1>Hope for the Children of <span>Alaska</span></h1>
+          <p>From the harsh Arctic winters to remote bush community schooling, we are dedicated to bringing warmth, education, and healthcare to every child in the Last Frontier.</p>
           <div className="hero-actions">
             <button className="btn btn-primary btn-large" onClick={() => alert('Donation flow triggered!')}>
               <Flame size={20} /> Donate a Winter Kit
@@ -27,7 +27,7 @@ const Homepage = () => {
         <div className="container impact-grid">
           <div className="stat-card">
             <h2 className="stat-number">15k+</h2>
-            <p className="stat-label">Pherans & Blankets Donated</p>
+            <p className="stat-label">Parkas & Blankets Donated</p>
           </div>
           <div className="stat-card">
             <h2 className="stat-number">5k+</h2>
@@ -35,7 +35,7 @@ const Homepage = () => {
           </div>
           <div className="stat-card">
             <h2 className="stat-number">30+</h2>
-            <p className="stat-label">Villages Reached</p>
+            <p className="stat-label">Bush Villages Reached</p>
           </div>
           <div className="stat-card">
             <h2 className="stat-number">500+</h2>
@@ -52,36 +52,36 @@ const Homepage = () => {
             
             <div className="program-card">
               <div className="program-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1485542790695-17f1853b0fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Winter Relief in Kashmir" />
+                <img src="https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Winter Relief in Alaska" />
                 <div className="program-icon"><Flame size={24} /></div>
               </div>
               <div className="program-info">
-                <h3>Winter Relief</h3>
-                <p>Providing heavy blankets, pherans, and kangris to ensure children in remote Kashmiri villages stay warm during the harsh Chillai Kalan.</p>
+                <h3>Arctic Winter Relief</h3>
+                <p>Providing heavy sub-zero parkas, blankets, and heating supplies to ensure children in remote Alaskan villages stay warm during the long winter nights.</p>
                 <Link to="/programs" className="read-more">Learn more <ArrowRight size={16} /></Link>
               </div>
             </div>
 
             <div className="program-card">
               <div className="program-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Education in Valleys" />
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Education in Bush Communities" />
                 <div className="program-icon"><BookOpen size={24} /></div>
               </div>
               <div className="program-info">
-                <h3>Valley Education</h3>
-                <p>Establishing community learning centers in Kupwara, Bandipora, and Anantnag to ensure continuous education despite weather or disruptions.</p>
+                <h3>Bush Community Education</h3>
+                <p>Establishing community learning centers in the Mat-Su Borough and beyond to ensure continuous education despite blizzards or disruptions.</p>
                 <Link to="/programs" className="read-more">Learn more <ArrowRight size={16} /></Link>
               </div>
             </div>
 
             <div className="program-card">
               <div className="program-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthcare" />
+                <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthcare" />
                 <div className="program-icon"><Activity size={24} /></div>
               </div>
               <div className="program-info">
-                <h3>Mobile Healthcare</h3>
-                <p>Deploying mobile medical camps to high-altitude areas where hospitals are inaccessible, focusing on child nutrition and immunizations.</p>
+                <h3>Bush Plane Healthcare</h3>
+                <p>Deploying mobile medical teams via bush planes to off-grid areas where hospitals are inaccessible, focusing on child nutrition and immunizations.</p>
                 <Link to="/programs" className="read-more">Learn more <ArrowRight size={16} /></Link>
               </div>
             </div>
@@ -95,7 +95,7 @@ const Homepage = () => {
         <div className="container cta-container">
           <div className="cta-content">
             <h2>Warm a Child's Heart This Winter</h2>
-            <p>Your contribution can provide a Winter Survival Kit for a child in Kashmir, protecting them from sub-zero temperatures.</p>
+            <p>Your contribution can provide an Arctic Survival Kit for a child in Alaska, protecting them from sub-zero temperatures.</p>
             <div className="cta-buttons">
               <button className="btn btn-primary" onClick={() => alert('Donation modal!')}>Donate $20 (One Kit)</button>
               <Link to="/involved" className="btn btn-outline">Join as a Volunteer</Link>

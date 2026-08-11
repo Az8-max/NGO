@@ -5,8 +5,8 @@ const AboutUs = () => {
     <div className="about-page animate-fade-in">
       <div className="page-header">
         <div className="container">
-          <h1>Our Story in the Valley</h1>
-          <p>Learn about our mission to bring hope, warmth, and education to the children of Jammu & Kashmir.</p>
+          <h1>Our Story in the Last Frontier</h1>
+          <p>Learn about our mission to bring hope, warmth, and education to the children of Alaska.</p>
         </div>
       </div>
 
@@ -18,17 +18,17 @@ const AboutUs = () => {
                 Our <span>Mission</span>
               </h2>
               <p>
-                Founded in the heart of Srinagar, Kashmir Hope Foundation believes that the children of the valley deserve a future unhindered by geography, harsh winters, or circumstance.
+                Founded in the heart of Anchorage, Alaska Hope Foundation believes that the children of the state deserve a future unhindered by geography, harsh Arctic winters, or circumstance.
               </p>
               <p>
-                We work directly with local communities in districts like Kupwara, Bandipora, and Anantnag to build resilient support systems. Whether it's providing heavy winter pherans or setting up remote learning centers, our goal is to nurture the next generation of Kashmiri youth.
+                We work directly with local communities in areas like the Mat-Su Borough, Fairbanks, and remote bush villages to build resilient support systems. Whether it's providing heavy sub-zero parkas or setting up remote learning centers, our goal is to nurture the next generation of Alaskan youth.
               </p>
               <div className="mission-points">
                 <div className="point">
                   <div className="point-icon">🏔️</div>
                   <div className="point-text">
                     <h4>Vision</h4>
-                    <p>A thriving Kashmir where every child has access to warmth, education, and health.</p>
+                    <p>A thriving Alaska where every child has access to warmth, education, and health.</p>
                   </div>
                 </div>
                 <div className="point">
@@ -41,7 +41,7 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="mission-image">
-              <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Children in Kashmir Valley" />
+              <img src="https://images.unsplash.com/photo-1525026116345-cb37e616cbf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Children in Alaska" />
               <div className="image-accent"></div>
             </div>
           </div>
@@ -56,28 +56,28 @@ const AboutUs = () => {
               <div className="timeline-year">2012</div>
               <div className="timeline-content">
                 <h3>The First Winter Drive</h3>
-                <p>Started in Srinagar by a group of local university students, distributing 500 blankets in Dal Lake communities during Chillai Kalan.</p>
+                <p>Started in Anchorage by a group of local university students, distributing 500 sub-zero blankets in surrounding communities during the darkest months.</p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">2016</div>
               <div className="timeline-content">
-                <h3>Remote Valley Education</h3>
-                <p>Established our first remote community school in Kupwara, ensuring education continues even when roads are blocked by snow.</p>
+                <h3>Bush Community Education</h3>
+                <p>Established our first remote community school near Fairbanks, ensuring education continues even when roads are blocked by blizzards.</p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">2020</div>
               <div className="timeline-content">
                 <h3>Healthcare Expansion</h3>
-                <p>Launched mobile medical camps, reaching over 10,000 children in high-altitude nomadic (Bakarwal) communities.</p>
+                <p>Launched bush plane medical flights, reaching over 10,000 children in high-latitude off-grid communities.</p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-year">Today</div>
               <div className="timeline-content">
-                <h3>A Valley-Wide Network</h3>
-                <p>Operating across 8 districts in J&K, supported by over 500 local volunteers dedicated to uplifting Kashmiri youth.</p>
+                <h3>A Statewide Network</h3>
+                <p>Operating across the state, supported by over 500 local volunteers dedicated to uplifting Alaskan youth.</p>
               </div>
             </div>
           </div>

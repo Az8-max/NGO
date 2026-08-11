@@ -3,8 +3,8 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  /* Children imagery */
-  background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+  /* Alaska imagery */
+  background-image: url('https://images.unsplash.com/photo-1534067954149-61f227582531?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to right, rgba(26,26,36,0.85) 0%, rgba(42,90,60,0.4) 100%);
+  background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(27,67,50,0.4) 100%);
 }
 
 .hero-content {
@@ -34,7 +34,9 @@
 }
 
 .hero h1 span {
-  color: var(--secondary-color);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 4px 6px rgba(0,0,0,0.8);
+  border-bottom: 4px solid var(--accent-color);
 }
 
 .hero p {

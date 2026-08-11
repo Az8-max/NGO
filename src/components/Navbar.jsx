@@ -23,10 +23,10 @@ const Navbar = () => {
 
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container nav-container">
-        <Link to="/" className="logo">
+      <div className="container navbar-container">
+        <Link to="/" className="navbar-logo">
           <MountainSnow size={28} className="logo-icon" />
-          <span>Kashmir Hope Foundation</span>
+          <span>Alaska Hope Foundation</span>
         </Link>
 
         <nav className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>

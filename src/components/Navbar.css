@@ -4,15 +4,9 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 1.5rem 0;
-  transition: all var(--transition-normal);
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
-}
-
-.navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
   padding: 1rem 0;
+  transition: all var(--transition-normal);
+  background: var(--bg-light);
   box-shadow: var(--shadow-sm);
 }
 
@@ -29,16 +23,6 @@
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-dark);
-}
-
-.navbar:not(.scrolled) .logo {
-  color: var(--text-light);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-/* Specific override if we are not on homepage and not scrolled */
-body:not(.homepage) .navbar:not(.scrolled) .logo {
-  color: var(--text-light); /* Kept light for consistency with the gradient */
 }
 
 .logo-icon {
@@ -58,17 +42,8 @@ body:not(.homepage) .navbar:not(.scrolled) .logo {
   position: relative;
 }
 
-.navbar:not(.scrolled) .nav-links a:not(.nav-donate-btn) {
-  color: var(--text-light);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-}
-
 .nav-links a:hover, .nav-links a.active {
   color: var(--secondary-color);
-}
-
-.navbar:not(.scrolled) .nav-links a:hover, .navbar:not(.scrolled) .nav-links a.active {
-  color: var(--primary-color);
 }
 
 .nav-links a::after {
@@ -80,10 +55,6 @@ body:not(.homepage) .navbar:not(.scrolled) .logo {
   height: 2px;
   background-color: var(--secondary-color);
   transition: width var(--transition-normal);
-}
-
-.navbar:not(.scrolled) .nav-links a::after {
-  background-color: var(--primary-color);
 }
 
 .nav-links a:hover::after, .nav-links a.active::after {
@@ -101,10 +72,6 @@ body:not(.homepage) .navbar:not(.scrolled) .logo {
   border: none;
   color: var(--text-dark);
   cursor: pointer;
-}
-
-.navbar:not(.scrolled) .mobile-menu-btn {
-  color: var(--text-light);
 }
 
 @media (max-width: 768px) {

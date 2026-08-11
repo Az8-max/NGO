@@ -7,7 +7,7 @@ const Contact = () => {
       <div className="page-header">
         <div className="container">
           <h1>Contact Us</h1>
-          <p>We'd love to hear from you. Get in touch with our Srinagar office for any inquiries, partnerships, or volunteering details.</p>
+          <p>We'd love to hear from you. Get in touch with our Anchorage office for any inquiries, partnerships, or volunteering details.</p>
         </div>
       </div>
 
@@ -16,23 +16,23 @@ const Contact = () => {
           <div className="contact-grid">
             
             <div className="contact-info-container">
-              <h2>Reach the <span>Valley</span></h2>
-              <p className="contact-intro">Our local team in Srinagar is ready to answer any questions you might have about our relief programs, donations, or joining our ground network.</p>
+              <h2>Reach Our <span>Office</span></h2>
+              <p className="contact-intro">Our team in Anchorage is ready to answer any questions you might have about our relief programs, donations, or joining our ground network.</p>
               
               <div className="contact-details">
                 <div className="contact-item">
                   <div className="contact-icon"><MapPin size={24} /></div>
                   <div className="contact-text">
-                    <h3>Srinagar Office</h3>
-                    <p>Residency Road, Lal Chowk<br/>Srinagar, Jammu & Kashmir 190001</p>
+                    <h3>Anchorage HQ</h3>
+                    <p>123 Northern Lights Blvd<br/>Anchorage, AK 99503</p>
                   </div>
                 </div>
                 
                 <div className="contact-item">
                   <div className="contact-icon"><Phone size={24} /></div>
                   <div className="contact-text">
-                    <h3>Phone & WhatsApp</h3>
-                    <p>+91 194 245 0000<br/>Mon-Sat from 9am to 5pm</p>
+                    <h3>Phone</h3>
+                    <p>(907) 555-0199<br/>Mon-Fri from 9am to 5pm</p>
                   </div>
                 </div>
                 
@@ -40,7 +40,7 @@ const Contact = () => {
                   <div className="contact-icon"><Mail size={24} /></div>
                   <div className="contact-text">
                     <h3>Email</h3>
-                    <p>salaam@kashmirhope.ngo<br/>partnerships@kashmirhope.ngo</p>
+                    <p>hello@alaskahope.ngo<br/>partnerships@alaskahope.ngo</p>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@ const Contact = () => {
       {/* Map Section (Placeholder) */}
       <section className="map-section">
         <div className="map-placeholder">
-          <p>Interactive Map of Srinagar HQ Here</p>
+          <p>Interactive Map of Anchorage HQ Here</p>
         </div>
       </section>
     </div>

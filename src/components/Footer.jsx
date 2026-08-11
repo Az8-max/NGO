@@ -9,10 +9,10 @@ const Footer = () => {
         <div className="footer-brand">
           <Link to="/" className="logo footer-logo">
             <MountainSnow size={28} className="logo-icon" />
-            <span>Kashmir Hope</span>
+            <span>Alaska Hope</span>
           </Link>
           <p className="footer-desc">
-            Empowering the children of the Kashmir Valley through winter relief, valley education, and community healthcare.
+            Empowering the children of the Alaska through winter relief, valley education, and community healthcare.
           </p>
           <div className="social-links">
             <a href="#" aria-label="Website"><Globe size={20} /></a>
