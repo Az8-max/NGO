@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   /* Alaska imagery */
-  background-image: url('https://images.unsplash.com/photo-1534067954149-61f227582531?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+  background-image: url('https://picsum.photos/id/1036/1600/900');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
