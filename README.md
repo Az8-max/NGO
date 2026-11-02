@@ -1,16 +1,31 @@
-# React + Vite
+# Silvester Legal - Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Recreated landing page for **Silvester Legal** (International Arbitration & SIAC Counsel, Singapore) with Google Tag Manager integration.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
+- **Embedded Assets**: Self-contained high-resolution assets and styling.
+- **Google Tag Manager**: Configured with Container ID `GTM-53FVN9W`.
+  - Head tracking script immediately after `<head>`
+  - Body `<noscript>` iframe fallback immediately after `<body>`
 
-## React Compiler
+## Files
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `index.html`: Main landing page entrypoint with GTM snippets.
+- `silvester-landing-final-version.html`: Standalone landing page file.
+- `server.js`: Lightweight local development HTTP server.
 
-## Expanding the Oxlint configuration
+## Local Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+To run the site locally:
+
+```bash
+node server.js
+```
+
+Then visit [http://localhost:3000/](http://localhost:3000/) in your browser.
+
+## Deployment
+
+Automated GitHub Pages deployment is configured via GitHub Actions in `.github/workflows/deploy.yml`. Every push to `main` publishes the static site directly to the `gh-pages` branch.
