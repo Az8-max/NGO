@@ -4,6 +4,13 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3001;
 const DIR = __dirname;
+const QUERIES_FILE = path.join(DIR, 'queries.json');
+const TARGET_EMAILS = ['info@silvesterlegal.com', 'saloni@silvesterlegal.com'];
+
+// Initialize queries.json if it doesn't exist
+if (!fs.existsSync(QUERIES_FILE)) {
+  fs.writeFileSync(QUERIES_FILE, JSON.stringify([], null, 2), 'utf8');
+}
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -20,7 +27,95 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  let reqPath = decodeURI(req.url.split('?')[0]);
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
+  const parsedUrl = req.url.split('?')[0];
+
+  // Handle client query submissions
+  if (req.method === 'POST' && parsedUrl === '/api/query') {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+      if (body.length > 1e6) {
+        req.destroy(); // 1MB limit
+      }
+    });
+
+    req.on('end', () => {
+      try {
+        let queryData;
+        if (req.headers['content-type'] && req.headers['content-type'].includes('application/json')) {
+          queryData = JSON.parse(body);
+        } else {
+          const params = new URLSearchParams(body);
+          queryData = Object.fromEntries(params.entries());
+        }
+
+        queryData.timestamp = new Date().toISOString();
+        queryData.destinations = TARGET_EMAILS;
+
+        // Persist query to queries.json
+        let existingQueries = [];
+        try {
+          existingQueries = JSON.parse(fs.readFileSync(QUERIES_FILE, 'utf8'));
+        } catch (e) {
+          existingQueries = [];
+        }
+        existingQueries.push(queryData);
+        fs.writeFileSync(QUERIES_FILE, JSON.stringify(existingQueries, null, 2), 'utf8');
+
+        // Formatted log of dispatched client query
+        console.log('\n================================================================');
+        console.log('>>> [NEW CLIENT QUERY RECEIVED & DISPATCHED]');
+        console.log(`>>> DESTINATIONS : ${TARGET_EMAILS.join(', ')}`);
+        console.log(`>>> TIMESTAMP    : ${queryData.timestamp}`);
+        console.log(`>>> FORM ORIGIN  : ${queryData.form || 'Website Consultation Form'}`);
+        console.log(`>>> CLIENT NAME  : ${queryData.name || 'Not provided'}`);
+        console.log(`>>> COMPANY      : ${queryData.company || 'Not provided'}`);
+        console.log(`>>> EMAIL        : ${queryData.email || 'Not provided'}`);
+        console.log(`>>> PHONE        : ${queryData.phone || 'Not provided'}`);
+        console.log(`>>> MATTER       : ${queryData.matter || queryData.message || 'No description provided'}`);
+        console.log('================================================================\n');
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          success: true,
+          message: 'Your query has been routed to ' + TARGET_EMAILS.join(' & ') + '.',
+          destinations: TARGET_EMAILS,
+          query: queryData
+        }));
+      } catch (err) {
+        console.error('Error parsing query submission:', err);
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: 'Invalid query payload' }));
+      }
+    });
+    return;
+  }
+
+  // Handle GET /api/queries to inspect recorded queries
+  if (req.method === 'GET' && parsedUrl === '/api/queries') {
+    let queries = [];
+    try {
+      queries = JSON.parse(fs.readFileSync(QUERIES_FILE, 'utf8'));
+    } catch (e) {
+      queries = [];
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ destinations: TARGET_EMAILS, total: queries.length, queries }, null, 2));
+    return;
+  }
+
+  let reqPath = decodeURI(parsedUrl);
   if (reqPath === '/' || reqPath === '') {
     reqPath = 'index.html';
   }
@@ -54,6 +149,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
-  console.log(`Direct preview: http://localhost:${PORT}/silvester-landing-final-version.html`);
-  console.log(`Thank-you preview: http://localhost:${PORT}/thank-you.html`);
+  console.log(`Inquiries destination routing configured for: ${TARGET_EMAILS.join(', ')}`);
 });
