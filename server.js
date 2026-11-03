@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const DIR = __dirname;
 
 const MIME_TYPES = {
@@ -22,10 +22,10 @@ const MIME_TYPES = {
 const server = http.createServer((req, res) => {
   let reqPath = decodeURI(req.url.split('?')[0]);
   if (reqPath === '/' || reqPath === '') {
-    reqPath = '/index.html';
+    reqPath = 'index.html';
   }
-
-  const filePath = path.join(DIR, reqPath);
+  const cleanPath = reqPath.replace(/^[/\\]+/, '');
+  const filePath = path.join(DIR, cleanPath);
 
   // Security check: ensure path stays within DIR
   if (!filePath.startsWith(DIR)) {
@@ -55,5 +55,5 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
   console.log(`Direct preview: http://localhost:${PORT}/silvester-landing-final-version.html`);
+  console.log(`Thank-you preview: http://localhost:${PORT}/thank-you.html`);
 });
-
