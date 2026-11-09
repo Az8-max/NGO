@@ -488,19 +488,13 @@ requestAnimationFrame(tick)}catch(e){}})()</script>
 function handleConsultSubmit(event) {
   event.preventDefault();
   var form = event.target || event.srcElement;
-  var btn = form.querySelector('button[type="submit"]') || form.querySelector('button');
-  if (btn) {
-    btn.disabled = true;
-    btn.textContent = 'Submitting...';
-  }
-
   var formData = new FormData(form);
   var payload = {
     name: formData.get('name') || '',
     company: formData.get('company') || '',
     email: formData.get('email') || '',
     phone: formData.get('phone') || '',
-    matter: formData.get('matter') || '',
+    matter: formData.get('matter') || formData.get('message') || '',
     form: form.id === 'hf' ? 'Hero Consultation Form' : 'Bottom Consultation Form',
     destinations: ['info@silvesterlegal.com', 'saloni@silvesterlegal.com'],
     timestamp: new Date().toISOString()
@@ -516,60 +510,48 @@ function handleConsultSubmit(event) {
       client_name: payload.name,
       client_email: payload.email
     });
-  } catch(e) {
-    console.warn('GTM dataLayer error:', e);
-  }
+  } catch(e) {}
 
-  var redirected = false;
-  function goToThankYou() {
-    if (!redirected) {
-      redirected = true;
-      window.location.href = 'thank-you.html';
+  // Background dispatch with keepalive: true and sendBeacon
+  try {
+    var blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon('/api/query', blob);
     }
-  }
+    fetch('/api/query', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).catch(function() {});
+  } catch(e) {}
 
-  // Safety timer: navigate to thank-you within 1200ms
-  var timeoutId = setTimeout(goToThankYou, 1200);
+  // FormSubmit fallback relay in background with keepalive
+  try {
+    var formSubmitPayload = {
+      _cc: 'saloni@silvesterlegal.com',
+      _subject: 'New Consultation Request - ' + (payload.name || 'Website Visitor'),
+      _replyto: payload.email || undefined,
+      _template: 'table',
+      _captcha: 'false',
+      'Client Name': payload.name || 'Not provided',
+      'Company': payload.company || 'Not provided',
+      'Business Email': payload.email || 'Not provided',
+      'Phone Number': payload.phone || 'Not provided',
+      'Dispute / Matter Details': payload.matter || 'No description provided',
+      'Form Origin': payload.form,
+      'Timestamp': payload.timestamp
+    };
+    fetch('https://formsubmit.co/ajax/info@silvesterlegal.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(formSubmitPayload),
+      keepalive: true
+    }).catch(function() {});
+  } catch(e) {}
 
-  // 1. Local backend dispatch
-  var localPromise = fetch('/api/query', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  }).catch(function() { return null; });
-
-  // 2. FormSubmit AJAX relay directly to info@ & CC to saloni@silvesterlegal.com
-  var formSubmitPayload = {
-    _cc: 'saloni@silvesterlegal.com',
-    _subject: 'New Consultation Request - ' + (payload.name || 'Website Visitor'),
-    _replyto: payload.email || undefined,
-    _template: 'table',
-    _captcha: 'false',
-    'Client Name': payload.name || 'Not provided',
-    'Company': payload.company || 'Not provided',
-    'Business Email': payload.email || 'Not provided',
-    'Phone Number': payload.phone || 'Not provided',
-    'Dispute / Matter Details': payload.matter || 'No description provided',
-    'Form Origin': payload.form,
-    'Timestamp': payload.timestamp
-  };
-
-  var fsPromise = fetch('https://formsubmit.co/ajax/info@silvesterlegal.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(formSubmitPayload)
-  }).catch(function() { return null; });
-
-  Promise.all([localPromise, fsPromise]).then(function() {
-    clearTimeout(timeoutId);
-    goToThankYou();
-  }).catch(function() {
-    clearTimeout(timeoutId);
-    goToThankYou();
-  });
+  // DIRECTLY go to thank you page immediately!
+  window.location.href = 'thank-you.html';
 }
 </script>
 </body></html>

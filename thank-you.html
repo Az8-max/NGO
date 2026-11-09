@@ -186,11 +186,15 @@ nav {
 
 /* Stat & Highlight Cards */
 .stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  display: flex;
+  justify-content: center;
   padding-top: 36px;
   border-top: 1px solid var(--border);
+}
+.stats-grid .stat-card {
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
 }
 @media (max-width: 640px) {
   .stats-grid {
@@ -357,10 +361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       
       <div class="stats-grid">
-        <div class="stat-card">
-          <div class="val"><a href="tel:+6562242214">+65 6224 2214</a></div>
-          <div class="desc">Emergency counsel line</div>
-        </div>
+        
         <div class="stat-card">
           <div class="val">100%</div>
           <div class="desc">Privileged &amp; confidential</div>
@@ -392,8 +393,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="contact-details">
           <span class="city">Singapore</span>
           <address>111 North Bridge Road #15-04, Peninsula Plaza, Singapore 179098</address>
-          <div><a href="tel:+6562242214">+65 6224 2214</a></div>
-          <div><a href="tel:+6569082215">+65 6908 2215</a></div>
           <div><a href="mailto:info@silvesterlegal.com">info@silvesterlegal.com</a></div>
         </div>
       </div>
