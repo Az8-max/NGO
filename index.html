@@ -366,11 +366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="m">Singapore counsel for international commercial arbitration, SIAC, SICC matters and cross-border disputes. We act for Indian promoters, companies and investors in SIAC arbitrations, Singapore International Commercial Court (SICC) proceedings and Singapore-seated disputes, with lawyers who understand how Indian businesses work.</p>
 <div class="row hbt"><a class="btn" href="#hf">Discuss your matter</a></div>
 <div class="row sr" style="gap:34px"><div class="stat"><b>International arbitration</b><span>Disputes handled</span></div><div class="stat"><b>India, China, UK, US</b><span>Clients from many countries</span></div></div></div>
-<div class="hfw"><form class="hf" id="hf" action="https://formsubmit.co/info@silvesterlegal.com" method="POST" onsubmit="handleConsultSubmit(event)">
-<input type="hidden" name="_cc" value="saloni@silvesterlegal.com">
-<input type="hidden" name="_subject" value="New International Arbitration Consultation Request - Silvester Legal">
-<input type="hidden" name="_next" value="https://az8-max.github.io/NGO/thank-you.html">
-<input type="hidden" name="_captcha" value="false">
+<div class="hfw"><form class="hf" id="hf" action="thank-you.html" onsubmit="handleConsultSubmit(event)">
 <h3>Tell us how we can help</h3>
 <div class="fr"><input name="name" placeholder="Full Name" required><input name="company" placeholder="Company"></div>
 <div class="fr"><input type="email" name="email" placeholder="Business Email" required><input type="tel" name="phone" placeholder="Phone"></div>
@@ -422,11 +418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div></section>
 
 <section id="f1"><div class="w"><div class="form two"><div><h2>Your dispute may cross borders. Your legal strategy shouldn't.</h2><p class="m" style="color:#cfd3da">Speak with Silvester Legal about your international commercial dispute or arbitration matter.</p></div>
-<form id="f1-form" action="https://formsubmit.co/info@silvesterlegal.com" method="POST" onsubmit="handleConsultSubmit(event)">
-<input type="hidden" name="_cc" value="saloni@silvesterlegal.com">
-<input type="hidden" name="_subject" value="New Dispute Consultation Request - Silvester Legal">
-<input type="hidden" name="_next" value="https://az8-max.github.io/NGO/thank-you.html">
-<input type="hidden" name="_captcha" value="false">
+<form id="f1-form" action="thank-you.html" onsubmit="handleConsultSubmit(event)">
 <input name="name" placeholder="Full Name" required><input name="company" placeholder="Company">
 <input type="email" name="email" placeholder="Business Email" required><input type="tel" name="phone" placeholder="Phone">
 <textarea name="matter" placeholder="Briefly describe your matter"></textarea>
@@ -489,16 +481,6 @@ function handleConsultSubmit(event) {
   event.preventDefault();
   var form = event.target || event.srcElement;
   var formData = new FormData(form);
-  var payload = {
-    name: formData.get('name') || '',
-    company: formData.get('company') || '',
-    email: formData.get('email') || '',
-    phone: formData.get('phone') || '',
-    matter: formData.get('matter') || formData.get('message') || '',
-    form: form.id === 'hf' ? 'Hero Consultation Form' : 'Bottom Consultation Form',
-    destinations: ['info@silvesterlegal.com', 'saloni@silvesterlegal.com'],
-    timestamp: new Date().toISOString()
-  };
 
   // Google Tag Manager Event Tracking
   try {
@@ -506,51 +488,13 @@ function handleConsultSubmit(event) {
     window.dataLayer.push({
       event: 'form_submission',
       form_id: form.id,
-      form_name: payload.form,
-      client_name: payload.name,
-      client_email: payload.email
+      form_name: form.id === 'hf' ? 'Hero Consultation Form' : 'Bottom Consultation Form',
+      client_name: formData.get('name') || '',
+      client_email: formData.get('email') || ''
     });
   } catch(e) {}
 
-  // Background dispatch with keepalive: true and sendBeacon
-  try {
-    var blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon('/api/query', blob);
-    }
-    fetch('/api/query', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      keepalive: true
-    }).catch(function() {});
-  } catch(e) {}
-
-  // FormSubmit fallback relay in background with keepalive
-  try {
-    var formSubmitPayload = {
-      _cc: 'saloni@silvesterlegal.com',
-      _subject: 'New Consultation Request - ' + (payload.name || 'Website Visitor'),
-      _replyto: payload.email || undefined,
-      _template: 'table',
-      _captcha: 'false',
-      'Client Name': payload.name || 'Not provided',
-      'Company': payload.company || 'Not provided',
-      'Business Email': payload.email || 'Not provided',
-      'Phone Number': payload.phone || 'Not provided',
-      'Dispute / Matter Details': payload.matter || 'No description provided',
-      'Form Origin': payload.form,
-      'Timestamp': payload.timestamp
-    };
-    fetch('https://formsubmit.co/ajax/info@silvesterlegal.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(formSubmitPayload),
-      keepalive: true
-    }).catch(function() {});
-  } catch(e) {}
-
-  // DIRECTLY go to thank you page immediately!
+  // Direct redirection to thank-you page
   window.location.href = 'thank-you.html';
 }
 </script>
